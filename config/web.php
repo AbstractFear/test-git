@@ -28,10 +28,16 @@ $config = [
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
-            // send all mails to a file by default. You have to set
-            // 'useFileTransport' to false and configure a transport
-            // for the mailer to send real emails.
-            'useFileTransport' => true,
+            'viewPath' => '@app/mailer',
+            'useFileTransport' => false,
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.gmail.com',
+                'username' => 'lugia20102010@gmail.com',
+                'password' => 'ntqvehfp01092000',
+                'port' => '587',
+                'encryption' => 'tls',
+            ],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -54,17 +60,16 @@ $config = [
         'rbac' => 'dektrium\rbac\RbacWebModule',
         'user' => [
             'class' => 'dektrium\user\Module',
+            // 'enableConfirmation' => false,
             'enableUnconfirmedLogin' => true,
             'confirmWithin' => 21600,
             'cost' => 12,
-            'admins' => ['admin'],
-            'mailer' => [
-                'sender'                => ['kozanashvili_teimuraz@mail.ru' => 'Shigure'],
-                'welcomeSubject'        => 'Welcome subject',
-                'confirmationSubject'   => 'Confirmation subject',
-                'reconfirmationSubject' => 'Email change subject',
-                'recoverySubject'       => 'Recovery subject',
-            ],
+            'admins' => ['Shigure'],
+        ],
+    'modelMap'=>[
+        'Profile'=>'app\models\Profile',
+        'RegistrationForm'=>'app\models\RegistrationForm',
+        'User'=>'app\models\User',
         ],
     ],
     'params' => $params,
