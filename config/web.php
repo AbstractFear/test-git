@@ -57,7 +57,7 @@ $config = [
             'enableUnconfirmedLogin' => true,
             'confirmWithin' => 21600,
             'cost' => 12,
-            'admins' => ['admin'],
+            'admins' => ['Shigure'],
             'mailer' => [
                 'sender'                => ['kozanashvili_teimuraz@mail.ru' => 'Shigure'],
                 'welcomeSubject'        => 'Welcome subject',
