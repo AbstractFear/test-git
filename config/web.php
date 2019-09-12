@@ -5,6 +5,7 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
+    'language' => 'ru-RU',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
@@ -12,6 +13,9 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+        'authManager' => [
+            'class' => 'dektrium\rbac\components\DbManager',
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '6M-uOHjj2lINfHuiGL9IgsjOqnOBUJ6T',
@@ -34,8 +38,8 @@ $config = [
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'smtp.gmail.com',
-                'username' => 'lugia20102010@gmail.com',
-                'password' => 'ntqvehfp01092000',
+                // 'username' => 'some_email',
+                // 'password' => 'some_password',
                 'port' => '587',
                 'encryption' => 'tls',
             ],
@@ -60,11 +64,14 @@ $config = [
         ],
     ],
     'modules' => [
-        'rbac' => 'dektrium\rbac\RbacWebModule',
+        'rbac' => [
+            'class' => 'dektrium\rbac\RbacWebModule',
+            'admins' => ['Shigure'], // me - username под которым логинишься в приложение
+        ],
         'user' => [
             'class' => 'dektrium\user\Module',
-            // 'enableConfirmation' => false,
-            'enableUnconfirmedLogin' => true,
+            'enableConfirmation' => false,
+            // 'enableUnconfirmedLogin' => true,
             'confirmWithin' => 21600,
             'cost' => 12,
             'admins' => ['Shigure'],
