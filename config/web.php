@@ -76,6 +76,33 @@ $config = [
             'cost' => 12,
             'admins' => ['Shigure'],
         ],
+        'filemanager' => [
+            'class' => 'pendalf89\filemanager\Module',
+            // Upload routes
+            'routes' => [
+                // Base absolute path to web directory
+                'baseUrl' => '',
+                // Base web directory url
+                'basePath' => '@frontend/web',
+                // Path for uploaded files in web directory
+                'uploadPath' => 'uploads',
+            ],
+            // Thumbnails info
+            'thumbs' => [
+                'small' => [
+                    'name' => 'Мелкий',
+                    'size' => [100, 100],
+                ],
+                'medium' => [
+                    'name' => 'Средний',
+                    'size' => [300, 200],
+                ],
+                'large' => [
+                    'name' => 'Большой',
+                    'size' => [500, 400],
+                ],
+            ],
+        ],
     'modelMap'=>[
         'Profile'=>'app\models\Profile',
         'RegistrationForm'=>'app\models\RegistrationForm',
